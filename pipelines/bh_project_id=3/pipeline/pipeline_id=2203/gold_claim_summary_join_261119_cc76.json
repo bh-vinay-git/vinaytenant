@@ -1,0 +1,674 @@
+{
+  "created_at": "2026-11-19T04:39:54.242146Z",
+  "updated_at": "2026-11-19T04:51:24.781889Z",
+  "created_by": "vinaya@bighammer.ai",
+  "updated_by": "vinaya@bighammer.ai",
+  "is_deleted": false,
+  "deleted_by": null,
+  "tenant_id": 2,
+  "pipeline_id": 2203,
+  "pipeline_name": "gold_claim_summary_join_261119_cc76",
+  "pipeline_key": "gold_claim_summary_join_261119_cc76",
+  "bh_project_id": 3,
+  "notes": null,
+  "tags": {
+    "pipeline_editor_save": {
+      "pipeline_id": 2203,
+      "test_impact": {
+        "diff": {
+          "removed_steps": [],
+          "added_steps": [],
+          "changed_steps": [
+            {
+              "step": "gold_claim_summary_rename",
+              "transformation": "Expression"
+            }
+          ]
+        },
+        "change_set": {
+          "bound_sources": [],
+          "unbound_sources": [],
+          "bound_targets": [],
+          "unbound_targets": [],
+          "column_changes": [],
+          "source_column_changes": [],
+          "step_changes": [
+            {
+              "step": "gold_claim_summary_rename",
+              "transformation": "Expression",
+              "kind": "structural",
+              "action": "modified",
+              "detail": {
+                "affected_targets": [
+                  "gold_claim_summary"
+                ],
+                "old_derived_fields": [
+                  {
+                    "name": "claim_category",
+                    "expression": "CAST(NULL AS STRING)"
+                  }
+                ],
+                "new_derived_fields": [
+                  {
+                    "name": "claim_category",
+                    "expression": "CASE WHEN allowed_amt_src_1 >= 500 THEN 'High Cost' ELSE 'Standard Cost' END"
+                  }
+                ]
+              }
+            }
+          ],
+          "bound_source_targets": {},
+          "bound_target_columns": {},
+          "membership_changed": false,
+          "cardinality_changed": false,
+          "cosmetic_only": false
+        },
+        "action_plan": {
+          "scenario_actions": [
+            {
+              "test_scenario_id": 3737,
+              "name": "Boundary Values and Data Type Integrity",
+              "action": "patch_llm",
+              "reasons": [
+                "mapping step 'gold_claim_summary_rename' modified"
+              ],
+              "deterministic_ops": [],
+              "llm_directives": [
+                {
+                  "op": "recompute_expected_rows",
+                  "reason": "Expression 'gold_claim_summary_rename' modified; mapped values may differ",
+                  "detail": {
+                    "affected_targets": [
+                      "gold_claim_summary"
+                    ],
+                    "old_derived_fields": [
+                      {
+                        "name": "claim_category",
+                        "expression": "CAST(NULL AS STRING)"
+                      }
+                    ],
+                    "new_derived_fields": [
+                      {
+                        "name": "claim_category",
+                        "expression": "CASE WHEN allowed_amt_src_1 >= 500 THEN 'High Cost' ELSE 'Standard Cost' END"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "test_scenario_id": 3736,
+              "name": "Duplicate and Multiple Claims per Member",
+              "action": "patch_llm",
+              "reasons": [
+                "mapping step 'gold_claim_summary_rename' modified"
+              ],
+              "deterministic_ops": [],
+              "llm_directives": [
+                {
+                  "op": "recompute_expected_rows",
+                  "reason": "Expression 'gold_claim_summary_rename' modified; mapped values may differ",
+                  "detail": {
+                    "affected_targets": [
+                      "gold_claim_summary"
+                    ],
+                    "old_derived_fields": [
+                      {
+                        "name": "claim_category",
+                        "expression": "CAST(NULL AS STRING)"
+                      }
+                    ],
+                    "new_derived_fields": [
+                      {
+                        "name": "claim_category",
+                        "expression": "CASE WHEN allowed_amt_src_1 >= 500 THEN 'High Cost' ELSE 'Standard Cost' END"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "test_scenario_id": 3733,
+              "name": "Happy Path with Complete Valid Data",
+              "action": "patch_llm",
+              "reasons": [
+                "mapping step 'gold_claim_summary_rename' modified"
+              ],
+              "deterministic_ops": [],
+              "llm_directives": [
+                {
+                  "op": "recompute_expected_rows",
+                  "reason": "Expression 'gold_claim_summary_rename' modified; mapped values may differ",
+                  "detail": {
+                    "affected_targets": [
+                      "gold_claim_summary"
+                    ],
+                    "old_derived_fields": [
+                      {
+                        "name": "claim_category",
+                        "expression": "CAST(NULL AS STRING)"
+                      }
+                    ],
+                    "new_derived_fields": [
+                      {
+                        "name": "claim_category",
+                        "expression": "CASE WHEN allowed_amt_src_1 >= 500 THEN 'High Cost' ELSE 'Standard Cost' END"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "test_scenario_id": 3734,
+              "name": "Inner Join Exclusion and Orphaned Records",
+              "action": "patch_llm",
+              "reasons": [
+                "mapping step 'gold_claim_summary_rename' modified"
+              ],
+              "deterministic_ops": [],
+              "llm_directives": [
+                {
+                  "op": "recompute_expected_rows",
+                  "reason": "Expression 'gold_claim_summary_rename' modified; mapped values may differ",
+                  "detail": {
+                    "affected_targets": [
+                      "gold_claim_summary"
+                    ],
+                    "old_derived_fields": [
+                      {
+                        "name": "claim_category",
+                        "expression": "CAST(NULL AS STRING)"
+                      }
+                    ],
+                    "new_derived_fields": [
+                      {
+                        "name": "claim_category",
+                        "expression": "CASE WHEN allowed_amt_src_1 >= 500 THEN 'High Cost' ELSE 'Standard Cost' END"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "test_scenario_id": 3735,
+              "name": "Null Handling in Source Fields",
+              "action": "patch_llm",
+              "reasons": [
+                "mapping step 'gold_claim_summary_rename' modified"
+              ],
+              "deterministic_ops": [],
+              "llm_directives": [
+                {
+                  "op": "recompute_expected_rows",
+                  "reason": "Expression 'gold_claim_summary_rename' modified; mapped values may differ",
+                  "detail": {
+                    "affected_targets": [
+                      "gold_claim_summary"
+                    ],
+                    "old_derived_fields": [
+                      {
+                        "name": "claim_category",
+                        "expression": "CAST(NULL AS STRING)"
+                      }
+                    ],
+                    "new_derived_fields": [
+                      {
+                        "name": "claim_category",
+                        "expression": "CASE WHEN allowed_amt_src_1 >= 500 THEN 'High Cost' ELSE 'Standard Cost' END"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "generate": [],
+          "change_set": {
+            "bound_sources": [],
+            "unbound_sources": [],
+            "bound_targets": [],
+            "unbound_targets": [],
+            "column_changes": [],
+            "source_column_changes": [],
+            "step_changes": [
+              {
+                "step": "gold_claim_summary_rename",
+                "transformation": "Expression",
+                "kind": "structural",
+                "action": "modified",
+                "detail": {
+                  "affected_targets": [
+                    "gold_claim_summary"
+                  ],
+                  "old_derived_fields": [
+                    {
+                      "name": "claim_category",
+                      "expression": "CAST(NULL AS STRING)"
+                    }
+                  ],
+                  "new_derived_fields": [
+                    {
+                      "name": "claim_category",
+                      "expression": "CASE WHEN allowed_amt_src_1 >= 500 THEN 'High Cost' ELSE 'Standard Cost' END"
+                    }
+                  ]
+                }
+              }
+            ],
+            "bound_source_targets": {},
+            "bound_target_columns": {},
+            "membership_changed": false,
+            "cardinality_changed": false,
+            "cosmetic_only": false
+          },
+          "summary": {
+            "patch_llm": 5
+          }
+        },
+        "total_scenarios": 5,
+        "stale_scenario_count": 5,
+        "stale_scenarios": [
+          {
+            "test_scenario_id": 3737,
+            "name": "Boundary Values and Data Type Integrity",
+            "reasons": [
+              "mapping step 'gold_claim_summary_rename' modified"
+            ],
+            "action": "patch_llm",
+            "references_removed_steps": [],
+            "references_changed_steps": [],
+            "stale": true
+          },
+          {
+            "test_scenario_id": 3736,
+            "name": "Duplicate and Multiple Claims per Member",
+            "reasons": [
+              "mapping step 'gold_claim_summary_rename' modified"
+            ],
+            "action": "patch_llm",
+            "references_removed_steps": [],
+            "references_changed_steps": [],
+            "stale": true
+          },
+          {
+            "test_scenario_id": 3733,
+            "name": "Happy Path with Complete Valid Data",
+            "reasons": [
+              "mapping step 'gold_claim_summary_rename' modified"
+            ],
+            "action": "patch_llm",
+            "references_removed_steps": [],
+            "references_changed_steps": [],
+            "stale": true
+          },
+          {
+            "test_scenario_id": 3734,
+            "name": "Inner Join Exclusion and Orphaned Records",
+            "reasons": [
+              "mapping step 'gold_claim_summary_rename' modified"
+            ],
+            "action": "patch_llm",
+            "references_removed_steps": [],
+            "references_changed_steps": [],
+            "stale": true
+          },
+          {
+            "test_scenario_id": 3735,
+            "name": "Null Handling in Source Fields",
+            "reasons": [
+              "mapping step 'gold_claim_summary_rename' modified"
+            ],
+            "action": "patch_llm",
+            "references_removed_steps": [],
+            "references_changed_steps": [],
+            "stale": true
+          }
+        ],
+        "coverage_gaps": [],
+        "affected_steps": [
+          "gold_claim_summary",
+          "gold_claim_summary_final"
+        ]
+      },
+      "saved_at": "2026-11-19T04:47:26.370649+00:00"
+    }
+  },
+  "status": "active",
+  "pipeline_version_id": null,
+  "bh_project_name": null,
+  "bh_github_username": null,
+  "pipeline_json": {
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "name": "gold_claim_summary_join_261119_cc76",
+    "description": "Requirement Pipeline",
+    "version": "1.0.0",
+    "engine_type": "pyspark",
+    "mode": "ENGINE",
+    "parameters": [],
+    "connections": {
+      "databricks-dev-vin_cinqdev": {
+        "connection_config_id": 407,
+        "name": "databricks-dev-vin_cinqdev",
+        "connection_config_name": "databricks-dev-vin",
+        "connection_type": "DatabricksDeltaLake",
+        "catalog": "cinqdev",
+        "schema": "bronze_demo",
+        "secret_name": "bh-dev-westus3-kv-key-scope/bh-azureunity-databricksdevvin"
+      }
+    },
+    "sources": {
+      "bronze_claims": {
+        "data_src_id": 4350,
+        "name": "bronze_claims",
+        "source_type": "Relational",
+        "table_name": "bronze_claims",
+        "connection": {
+          "$ref": "#/connections/databricks-dev-vin_cinqdev"
+        },
+        "fields": [
+          "claim_id",
+          "member_id",
+          "service_date",
+          "provider_id",
+          "allowed_amt"
+        ],
+        "schema": [
+          {
+            "name": "claim_id",
+            "type": "string",
+            "nullable": true
+          },
+          {
+            "name": "member_id",
+            "type": "string",
+            "nullable": true
+          },
+          {
+            "name": "service_date",
+            "type": "date",
+            "nullable": true
+          },
+          {
+            "name": "provider_id",
+            "type": "string",
+            "nullable": true
+          },
+          {
+            "name": "allowed_amt",
+            "type": "decimal(0,0)",
+            "nullable": true
+          }
+        ],
+        "db_schema": "bronze_demo"
+      },
+      "bronze_members": {
+        "data_src_id": 4351,
+        "name": "bronze_members",
+        "source_type": "Relational",
+        "table_name": "bronze_members",
+        "connection": {
+          "$ref": "#/connections/databricks-dev-vin_cinqdev"
+        },
+        "fields": [
+          "member_id",
+          "member_name",
+          "state"
+        ],
+        "schema": [
+          {
+            "name": "member_id",
+            "type": "string",
+            "nullable": true
+          },
+          {
+            "name": "member_name",
+            "type": "string",
+            "nullable": true
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "nullable": true
+          }
+        ],
+        "db_schema": "bronze_demo"
+      }
+    },
+    "targets": {
+      "gold_claim_summary": {
+        "data_src_id": 4349,
+        "name": "gold_claim_summary",
+        "target_type": "Relational",
+        "table_name": "gold_claim_summary",
+        "load_mode": "overwrite",
+        "connection": {
+          "$ref": "#/connections/databricks-dev-vin_cinqdev"
+        },
+        "schema": "silverraw_claims",
+        "fields": [
+          {
+            "name": "claim_id",
+            "type": "String",
+            "nullable": true,
+            "is_pk": true
+          },
+          {
+            "name": "member_id",
+            "type": "String",
+            "nullable": true,
+            "is_pk": false
+          },
+          {
+            "name": "member_name",
+            "type": "String",
+            "nullable": true,
+            "is_pk": false
+          },
+          {
+            "name": "state",
+            "type": "String",
+            "nullable": true,
+            "is_pk": false
+          },
+          {
+            "name": "service_date",
+            "type": "Date",
+            "nullable": true,
+            "is_pk": false
+          },
+          {
+            "name": "provider_id",
+            "type": "String",
+            "nullable": true,
+            "is_pk": false
+          },
+          {
+            "name": "allowed_amt",
+            "type": "Decimal",
+            "nullable": true,
+            "is_pk": false
+          },
+          {
+            "name": "claim_category",
+            "type": "String",
+            "nullable": true,
+            "is_pk": false
+          }
+        ]
+      }
+    },
+    "transformations": [
+      {
+        "name": "bronze_claims",
+        "transformation": "Reader",
+        "dependent_on": [],
+        "source": {
+          "$ref": "#/sources/bronze_claims"
+        },
+        "rename_columns": {
+          "claim_id": "claim_id_src_1",
+          "member_id": "member_id_src_1",
+          "service_date": "service_date_src_1",
+          "provider_id": "provider_id_src_1",
+          "allowed_amt": "allowed_amt_src_1"
+        },
+        "schema": [
+          {
+            "name": "claim_id",
+            "type": "string",
+            "nullable": true
+          },
+          {
+            "name": "member_id",
+            "type": "string",
+            "nullable": true
+          },
+          {
+            "name": "service_date",
+            "type": "date",
+            "nullable": true
+          },
+          {
+            "name": "provider_id",
+            "type": "string",
+            "nullable": true
+          },
+          {
+            "name": "allowed_amt",
+            "type": "decimal(0,0)",
+            "nullable": true
+          }
+        ],
+        "read_options": {}
+      },
+      {
+        "name": "bronze_members",
+        "transformation": "Reader",
+        "dependent_on": [],
+        "source": {
+          "$ref": "#/sources/bronze_members"
+        },
+        "rename_columns": {
+          "member_id": "member_id_src_2",
+          "member_name": "member_name_src_2",
+          "state": "state_src_2"
+        },
+        "schema": [
+          {
+            "name": "member_id",
+            "type": "string",
+            "nullable": true
+          },
+          {
+            "name": "member_name",
+            "type": "string",
+            "nullable": true
+          },
+          {
+            "name": "state",
+            "type": "string",
+            "nullable": true
+          }
+        ],
+        "read_options": {}
+      },
+      {
+        "name": "gold_claim_summary",
+        "transformation": "Writer",
+        "dependent_on": [
+          "gold_claim_summary_final"
+        ],
+        "target": {
+          "$ref": "#/targets/gold_claim_summary"
+        },
+        "write_options": {
+          "mode": "overwrite",
+          "createDisposition": "CREATE_IF_NEEDED",
+          "writeMethod": "direct"
+        }
+      },
+      {
+        "name": "gold_claim_summary_final",
+        "transformation": "Expression",
+        "dependent_on": [
+          "gold_claim_summary_rename"
+        ],
+        "rename_columns": {},
+        "select_columns": [
+          "claim_id",
+          "member_id",
+          "member_name",
+          "state",
+          "service_date",
+          "provider_id",
+          "allowed_amt",
+          "claim_category"
+        ]
+      },
+      {
+        "name": "join_claims_members",
+        "transformation": "Joiner",
+        "dependent_on": [
+          "bronze_claims",
+          "bronze_members"
+        ],
+        "conditions": [
+          {
+            "join_input": "bronze_members",
+            "join_condition": "member_id_src_1 = member_id_src_2",
+            "join_type": "inner"
+          }
+        ],
+        "driving_input": "bronze_claims"
+      },
+      {
+        "name": "gold_claim_summary_rename",
+        "transformation": "Expression",
+        "dependent_on": [
+          "join_claims_members"
+        ],
+        "select_columns": [
+          "claim_id",
+          "member_id",
+          "member_name",
+          "state",
+          "service_date",
+          "provider_id",
+          "allowed_amt",
+          "claim_category"
+        ],
+        "rename_columns": {
+          "claim_id_src_1": "claim_id",
+          "member_id_src_1": "member_id",
+          "member_name_src_2": "member_name",
+          "state_src_2": "state",
+          "service_date_src_1": "service_date",
+          "provider_id_src_1": "provider_id",
+          "allowed_amt_src_1": "allowed_amt"
+        },
+        "derived_fields": [
+          {
+            "name": "claim_category",
+            "expression": "CASE WHEN allowed_amt_src_1 >= 500 THEN 'High Cost' ELSE 'Standard Cost' END"
+          }
+        ]
+      }
+    ],
+    "target_prep": {
+      "gold_claim_summary": "gold_claim_summary_rename"
+    }
+  },
+  "draft_pipeline_json": null,
+  "pipeline_type": "requirement",
+  "engine_type": "pyspark",
+  "total_test_scenario": null,
+  "passed_test": null,
+  "failed_test": null,
+  "sme_recommendations_count": null,
+  "process_status": null,
+  "pipeline_parameters": []
+}
